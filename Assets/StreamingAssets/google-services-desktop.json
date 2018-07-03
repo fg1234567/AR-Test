@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1078630605060",
+    "firebase_url": "https://ar-test-firebase.firebaseio.com",
+    "project_id": "ar-test-firebase",
+    "storage_bucket": "ar-test-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078630605060:android:5d381cff577236ad",
+        "android_client_info": {
+          "package_name": "com.FG.ARTest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078630605060-fa19eh0et5pql4089d14mtvaltdthgfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA69KFmDKq8ZlwPYkNWWlRzpBW9O5kAsWU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
