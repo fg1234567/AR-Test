@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/Ev/Desktop/ARTest/ARTest_v4.apk
+C:/Users/Ev/Desktop/ARTest/ARTest_v5.apk
 SceneListBegin?
 Assets/AR-Test.unity
 SceneListEnd?
