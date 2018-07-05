@@ -63,37 +63,39 @@ public class ItemCollection : MonoBehaviour {
 
 					GameObject touchedObj = hit.transform.gameObject;
 
-					reference.GetValueAsync().ContinueWith(task => {
-				        
-				        if (task.IsFaulted) {
-				          // Handle the error...
-				          print("Database check error!");
-				        }
-				        else if (task.IsCompleted) {
-				          DataSnapshot snapshot = task.Result;
-				          
-				          availability = (string)snapshot.Child(touchedObj.name).Value;
-				          print("Availibility: " + availability);
-				        }
-				    });
-
-
 					PrintName(touchedObj);
 					print("An object touched!");
 
 					fadeOutAnim = (Animator)touchedObj.GetComponent(typeof(Animator));
 					if(fadeOutAnim){
-						if(availability == "available"){
-							fadeOutAnim.enabled = true;
 
-							Dictionary<string, object> collectionUpdate = new Dictionary<string, object>();
-							collectionUpdate.Add( touchedObj.name, "collected");
+						reference.GetValueAsync().ContinueWith(task => {
+					        
+					        if (task.IsFaulted) {
+					        	// Handle the error...
+					        	print("Database check error!");
+					        }
+					        else if (task.IsCompleted) {
+								DataSnapshot snapshot = task.Result;
 
-							//reference.SetRawJsonValueAsync(jsonString);
-							reference.UpdateChildrenAsync(collectionUpdate);							
-						}else{
-							print("Item already collected!");
-						}
+								availability = (string)snapshot.Child(touchedObj.name).Value;
+								print("Availibility: " + availability);
+
+								if(availability == "available"){
+									fadeOutAnim.enabled = true;
+
+									Dictionary<string, object> collectionUpdate = new Dictionary<string, object>();
+									collectionUpdate.Add( touchedObj.name, "collected");
+
+									//reference.SetRawJsonValueAsync(jsonString);
+									reference.UpdateChildrenAsync(collectionUpdate);							
+								}else{
+									print("Item already collected!");
+								}
+					        }
+					    });
+
+
 
 
 					}else{
