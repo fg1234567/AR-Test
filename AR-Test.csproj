@@ -260,6 +260,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BottleFadeOut.cs" />
+    <Compile Include="Assets\CupFadeOut.cs" />
     <Compile Include="Assets\ItemCollection.cs" />
     <Compile Include="Assets\ItemFadeOut.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />

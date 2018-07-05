@@ -13,6 +13,7 @@ public class ItemCollection : MonoBehaviour {
 	DatabaseReference reference;
 	string path;
 	string jsonString;
+	public Animator fadeOutAnim;
 
 	void Start () {
 		Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
@@ -50,7 +51,7 @@ public class ItemCollection : MonoBehaviour {
 	private void Update () {
 		if(Input.GetMouseButtonDown(0)){
 
-			print("TEST1");
+			print("Mouse clicked!");
 
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,30 +59,31 @@ public class ItemCollection : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit, 100.0f)){
 				if(hit.transform != null ){
 
-					PrintName(hit.transform.gameObject);
-					print("TEST2");
-
-					BottleFadeOut BFO = (BottleFadeOut)FindObjectOfType(typeof(BottleFadeOut));
-				    if (BFO){
-		        	    Debug.Log("BottleFadeOut object found: " + BFO.name);
-				    
-		        	    // FADEOUT ACTION
-		        	    BFO.startFading();
-
-		        	    //ITEM COLLECTION ACTION ON FIREBASE REALTIME DATABASE
+					GameObject touchedObj = hit.transform.gameObject;
 
 
-		        	    reference.SetRawJsonValueAsync(jsonString);
+					PrintName(touchedObj);
+					print("An object touched!");
 
-				    }
-		        	else
-		            	Debug.Log("No BottleFadeOut object could be found");
+					fadeOutAnim = (Animator)touchedObj.GetComponent(typeof(Animator));
+					if(fadeOutAnim){
+
+						fadeOutAnim.enabled = true;
+
+						Dictionary<string, object> collectionUpdate = new Dictionary<string, object>();
+						collectionUpdate.Add( touchedObj.name, "collected");
+
+						//reference.SetRawJsonValueAsync(jsonString);
+						reference.UpdateChildrenAsync(collectionUpdate);
+
+					}else{
+						print("No animator defined for this object!");
+
+					}
 
 				}
 
 			}
-
-
 
 		}
 

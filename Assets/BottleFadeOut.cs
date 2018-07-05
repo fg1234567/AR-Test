@@ -8,11 +8,8 @@ public class BottleFadeOut : MonoBehaviour {
 
 	public void startFading(){
 
-		print("START FADING");
+		print("Bottle START FADING");
 		fadeOutAnimaton.enabled = true;	
 
 	}
-
-
-
 }
