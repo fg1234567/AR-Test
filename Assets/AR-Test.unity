@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c243da0f8a2c34aa70fb9201a50c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutAnim: {fileID: 0}
 --- !u!114 &865878400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,6 +966,10 @@ Prefab:
         type: 2}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366901039463416, guid: 2fba5daf4ad56684cb957672b500b25d, type: 2}
+      propertyPath: m_Name
+      value: bottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fba5daf4ad56684cb957672b500b25d, type: 2}

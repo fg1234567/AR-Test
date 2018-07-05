@@ -13,8 +13,10 @@ public class ItemCollection : MonoBehaviour {
 	DatabaseReference reference;
 	string path;
 	string jsonString;
+	string availability;
 	public Animator fadeOutAnim;
-
+	
+	
 	void Start () {
 		Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
 		  var dependencyStatus = task.Result;
@@ -61,20 +63,38 @@ public class ItemCollection : MonoBehaviour {
 
 					GameObject touchedObj = hit.transform.gameObject;
 
+					reference.GetValueAsync().ContinueWith(task => {
+				        
+				        if (task.IsFaulted) {
+				          // Handle the error...
+				          print("Database check error!");
+				        }
+				        else if (task.IsCompleted) {
+				          DataSnapshot snapshot = task.Result;
+				          
+				          availability = (string)snapshot.Child(touchedObj.name).Value;
+				          print("Availibility: " + availability);
+				        }
+				    });
+
 
 					PrintName(touchedObj);
 					print("An object touched!");
 
 					fadeOutAnim = (Animator)touchedObj.GetComponent(typeof(Animator));
 					if(fadeOutAnim){
+						if(availability == "available"){
+							fadeOutAnim.enabled = true;
 
-						fadeOutAnim.enabled = true;
+							Dictionary<string, object> collectionUpdate = new Dictionary<string, object>();
+							collectionUpdate.Add( touchedObj.name, "collected");
 
-						Dictionary<string, object> collectionUpdate = new Dictionary<string, object>();
-						collectionUpdate.Add( touchedObj.name, "collected");
+							//reference.SetRawJsonValueAsync(jsonString);
+							reference.UpdateChildrenAsync(collectionUpdate);							
+						}else{
+							print("Item already collected!");
+						}
 
-						//reference.SetRawJsonValueAsync(jsonString);
-						reference.UpdateChildrenAsync(collectionUpdate);
 
 					}else{
 						print("No animator defined for this object!");
