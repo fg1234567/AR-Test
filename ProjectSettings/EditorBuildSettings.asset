@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 3e0d37ce777cba14783a6fd138c25063
+  - enabled: 1
     path: Assets/AR-Test.unity
     guid: 6e088cbf3d58dac4a86a05be6e712ab5
