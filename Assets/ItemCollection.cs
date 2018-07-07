@@ -5,6 +5,8 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
 using System.IO;
+using UnityEngine.SceneManagement;
+using Vuforia;
 
 public class ItemCollection : MonoBehaviour {
 
@@ -15,9 +17,21 @@ public class ItemCollection : MonoBehaviour {
 	string jsonString;
 	string availability;
 	public Animator fadeOutAnim;
+	public GameObject ARCamera; 
+
 	
 	
 	void Start () {
+
+		if(SceneManager.GetActiveScene().buildIndex == 1){
+			ARCamera = GameObject.Find("ARCamera");
+
+			VuforiaRuntime.Instance.InitVuforia();
+			ARCamera.GetComponent<VuforiaBehaviour>().enabled = true;
+
+		}
+
+
 		Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
 		  var dependencyStatus = task.Result;
 		  if (dependencyStatus == Firebase.DependencyStatus.Available) {

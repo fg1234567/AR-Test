@@ -43,7 +43,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
           if (dependencyStatus == Firebase.DependencyStatus.Available) {
             // Set a flag here indiciating that Firebase is ready to use by your
             // application.
-            Debug.Log("FIREBASE IS READY!");
+            Debug.Log("FIREBASE IS READY 2!");
 
 
           } else {
