@@ -28,7 +28,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     public DatabaseReference reference;
     string availability;
-    bool isAvailable;
+    //bool isAvailable;
 
     protected virtual void Start()
     {
@@ -37,26 +37,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
 
-        // FIREBASE OPERATIONS
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
-          var dependencyStatus = task.Result;
-          if (dependencyStatus == Firebase.DependencyStatus.Available) {
-            // Set a flag here indiciating that Firebase is ready to use by your
-            // application.
-            Debug.Log("FIREBASE IS READY 2!");
-
-
-          } else {
-            UnityEngine.Debug.LogError(System.String.Format(
-              "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-            // Firebase Unity SDK is not safe to use here.
-            Debug.Log("FIREBASE IS NOT READY!");
-
-
-          }
-        });
-
-                // Set up the Editor before calling into the realtime database.
+        // *********************************** FIREBASE OPERATIONS
+        
+        // Set up the Editor before calling into the realtime database.
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://ar-test-firebase.firebaseio.com/");
 
         // Get the root reference location of the database.
@@ -64,7 +47,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
 
 
-        // FIREBASE OPERATIONS
+        // *********************************** FIREBASE OPERATIONS
 
 
 
@@ -133,13 +116,29 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 print("ITEM NAME: " + colliderComponents[0].name);
 
                 availability = (string)snapshot.Child(colliderComponents[0].name).Value;
-                print("Availibility: " + availability);
-                if(availability == "available"){
-                    isAvailable = true;
-                }else{
-                    isAvailable = false;
-                }
+                //print("Availibility: " + availability);
 
+                if(availability != null ){
+
+                    if(availability == "collected"){
+                        foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
+                            component.enabled = true;
+                            Color color = component.GetComponent<Renderer>().material.color;
+                            color.a = 0.40f;// This number equals approximately to 100/255, transparency in the last frame of fade out animation. 
+                            component.GetComponent<Renderer>().material.color = color;           
+                        
+                        } 
+                    }else{
+                        foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
+                            component.enabled = true;
+                                           
+                        } 
+                    }
+                }else{ //error catching
+                    print("Item availability information could not be reached!");
+                }   
+
+                /*
                 // Enable rendering:
                 foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
                     component.enabled = true;
@@ -149,6 +148,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                         component.GetComponent<Renderer>().material.color = color;                
                     } 
                 }
+                */
 
             }
         });     

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BottleFadeOut : MonoBehaviour {
 
-	public Animator fadeOutAnimaton;
+	public Animator fadeOutAnimation;
 
 	public void startFading(){
 
 		print("Bottle START FADING");
-		fadeOutAnimaton.enabled = true;	
+		fadeOutAnimation.enabled = true;	
 
 	}
 }

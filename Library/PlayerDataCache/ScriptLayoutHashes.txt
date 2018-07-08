@@ -2,6 +2,7 @@ Android
 PlayerPath?
 C:/Users/Ev/Desktop/ARTest.apk
 SceneListBegin?
+Assets/MainMenu.unity
 Assets/AR-Test.unity
 SceneListEnd?
 81a46bbf570489841c7f9bc55f05c114 Assembly-CSharp.dll:.CupFadeOut

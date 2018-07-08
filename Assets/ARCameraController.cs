@@ -7,7 +7,17 @@ public class ARCameraController : MonoBehaviour {
 
 	public GameObject ARCamera; 
 
+	void Awake(){
+/*
+		print("initialization of AR Camera!");
 
+		ARCamera = GameObject.Find("ARCamera");
+
+		VuforiaRuntime.Instance.InitVuforia();
+
+		ARCamera.GetComponent<VuforiaBehaviour>().enabled = true;
+*/
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -24,13 +34,7 @@ public class ARCameraController : MonoBehaviour {
 
 	public void initializeArCamera(){
 
-		print("initialization of AR Camera!");
 
-		ARCamera = GameObject.Find("ARCamera");
-
-		VuforiaRuntime.Instance.InitVuforia();
-
-		ARCamera.GetComponent<VuforiaBehaviour>().enabled = true;
 
 	
 

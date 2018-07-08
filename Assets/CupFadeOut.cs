@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CupFadeOut : MonoBehaviour {
 
-	public Animator fadeOutAnimaton;
+	public Animator fadeOutAnimation;
 
 	public void startFading(){
 
 		print("Cup START FADING");
-		fadeOutAnimaton.enabled = true;	
+		fadeOutAnimation.enabled = true;	
 
 	}
 

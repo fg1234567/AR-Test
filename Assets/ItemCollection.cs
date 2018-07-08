@@ -13,24 +13,15 @@ public class ItemCollection : MonoBehaviour {
 		// Use this for initialization
 
 	DatabaseReference reference;
-	string path;
-	string jsonString;
+	//string path;
+	//string jsonString;
 	string availability;
 	public Animator fadeOutAnim;
 	public GameObject ARCamera; 
 
-	
+
 	
 	void Start () {
-
-		if(SceneManager.GetActiveScene().buildIndex == 1){
-			ARCamera = GameObject.Find("ARCamera");
-
-			VuforiaRuntime.Instance.InitVuforia();
-			ARCamera.GetComponent<VuforiaBehaviour>().enabled = true;
-
-		}
-
 
 		Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
 		  var dependencyStatus = task.Result;
@@ -58,8 +49,8 @@ public class ItemCollection : MonoBehaviour {
 	    reference = FirebaseDatabase.DefaultInstance.RootReference;		
 
 
-	    path = Application.dataPath + "/JsonData/items.json";
-	    jsonString = File.ReadAllText(path);
+	    //path = Application.dataPath + "/JsonData/items.json";
+	    //jsonString = File.ReadAllText(path);
 	}
 
 
@@ -98,7 +89,7 @@ public class ItemCollection : MonoBehaviour {
 								if(availability == "available"){
 									fadeOutAnim.enabled = true;
 
-									Dictionary<string, object> collectionUpdate = new Dictionary<string, object>();
+									Dictionary<string, object> collectionUpdate = new Dictionary<string, object>(); 
 									collectionUpdate.Add( touchedObj.name, "collected");
 
 									//reference.SetRawJsonValueAsync(jsonString);

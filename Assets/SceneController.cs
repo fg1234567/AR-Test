@@ -9,11 +9,17 @@ public class SceneController : MonoBehaviour {
 
 	public GameObject ARCamera;
 
-	void Start(){
-
+	void Awake(){
+		
 		ARCamera = GameObject.Find("ARCamera");
 
-		//ARCamera.GetComponent<VuforiaBehaviour>().enabled = false;
+		ARCamera.GetComponent<VuforiaBehaviour>().enabled = false;
+
+	}
+
+	void Start(){
+
+
 	}
 
 	public void loadLevel(string sceneName){
