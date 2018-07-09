@@ -1,9 +1,8 @@
 {
-	"item1" : "available",
-	"item2" : "available",
+	"apple" : "available",
+	"banana" : "available",
 	"bottle" : "available",
-	"item4" : "available",
 	"cup" : "available",
-	"item6" : "available",
-	"item7" : "available"
+	"orange" : "available",
+	"pear" : "available"
 }

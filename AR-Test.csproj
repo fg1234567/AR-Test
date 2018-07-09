@@ -272,6 +272,7 @@
     <Compile Include="Assets\ItemFadeOut.cs" />
     <Compile Include="Assets\Login.cs" />
     <Compile Include="Assets\Register.cs" />
+    <Compile Include="Assets\ResetGame.cs" />
     <Compile Include="Assets\SceneController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -333,6 +334,7 @@
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_ModelTarget.xml" />
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_Object_OT.xml" />
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_VuMark.xml" />
+    <None Include="Assets\StreamingAssets\Vuforia\afterliradatabase.xml" />
     <None Include="Assets\StreamingAssets\Vuforia\ar_pr_database.xml" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />

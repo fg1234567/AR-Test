@@ -105,6 +105,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
         //Checking if the item is already collected or not
 
+        reference = FirebaseDatabase.DefaultInstance.RootReference; 
+
+
         reference.GetValueAsync().ContinueWith(task => { //Be carefull about asyncronization, task is the return of asyncronized function -> ContinueWith() takes a callback function as argument
             
             if (task.IsFaulted) {
@@ -121,6 +124,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 if(availability != null ){
 
                     if(availability == "collected"){
+                        print("Item is COLLECTED!");
                         foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
                             component.enabled = true;
                             Color color = component.GetComponent<Renderer>().material.color;
@@ -129,9 +133,12 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                         
                         } 
                     }else{
-                        foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
+                        print("Item is AVAILABLE!");
+                        foreach (var component in rendererComponents){ 
                             component.enabled = true;
-                                           
+                            Color color = component.GetComponent<Renderer>().material.color;
+                            color.a = 1.00f;// ATTENTION! IF ITEM IS AVAILABLE we render the component with %100 alpha value, 
+                            component.GetComponent<Renderer>().material.color = color;                
                         } 
                     }
                 }else{ //error catching
