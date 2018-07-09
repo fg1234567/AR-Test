@@ -270,6 +270,8 @@
     <Compile Include="Assets\CupFadeOut.cs" />
     <Compile Include="Assets\ItemCollection.cs" />
     <Compile Include="Assets\ItemFadeOut.cs" />
+    <Compile Include="Assets\Login.cs" />
+    <Compile Include="Assets\Register.cs" />
     <Compile Include="Assets\SceneController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

@@ -1,7 +1,10 @@
 sceneSetups:
-- path: Assets/MainMenu.unity
+- path: Assets/LoginPage.unity
   isLoaded: 1
   isActive: 0
-- path: Assets/AR-Test.unity
+- path: Assets/MainMenu.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/AR-Test.unity
+  isLoaded: 1
+  isActive: 0

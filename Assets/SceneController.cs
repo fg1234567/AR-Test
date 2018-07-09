@@ -10,10 +10,12 @@ public class SceneController : MonoBehaviour {
 	public GameObject ARCamera;
 
 	void Awake(){
-		
-		ARCamera = GameObject.Find("ARCamera");
 
-		ARCamera.GetComponent<VuforiaBehaviour>().enabled = false;
+		print("SCENE Controller is awake!");
+
+
+
+		//ARCamera.GetComponent<VuforiaBehaviour>().enabled = false;
 
 	}
 
@@ -26,6 +28,9 @@ public class SceneController : MonoBehaviour {
 
 		SceneManager.LoadScene(sceneName);
 		print("NEW SCENE LOADED!");
+		
+
+
 
 	}
 }

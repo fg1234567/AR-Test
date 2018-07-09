@@ -2,10 +2,11 @@ Android
 PlayerPath?
 C:/Users/Ev/Desktop/ARTest.apk
 SceneListBegin?
+Assets/LoginPage.unity
 Assets/MainMenu.unity
 Assets/AR-Test.unity
 SceneListEnd?
-81a46bbf570489841c7f9bc55f05c114 Assembly-CSharp.dll:.CupFadeOut
+77414137bbe316facc3404309b6be0fd Assembly-CSharp.dll:.CupFadeOut
 75cd0c6c744b9733ef29aa6c59ece2b1 Assembly-CSharp.dll:TMPro.Examples.VertexZoom
 c906602d9b43cc5e075f80e1d8ae7c79 Assembly-CSharp.dll:TMPro.Examples.Benchmark01_UGUI
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -22,7 +23,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 2fc42ccbd04c1ac675122b588fc99997 Assembly-CSharp.dll:.SceneController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ItemFadeOut
-2fc42ccbd04c1ac675122b588fc99997 Assembly-CSharp.dll:.ARCameraController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ARCameraController
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -258,7 +259,7 @@ a8ed45ab553b07236625df6cc6ac449c TextMeshPro-2017.3-Editor.dll:TMPro.EditorUtili
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.TMP_DigitValidator
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TeleType
 8a50d3d11bf0cc541f5c35347dd25633 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
-81a46bbf570489841c7f9bc55f05c114 Assembly-CSharp.dll:.BottleFadeOut
+77414137bbe316facc3404309b6be0fd Assembly-CSharp.dll:.BottleFadeOut
 76015de5fcb247eeb8df66c001d5a22d Assembly-CSharp.dll:TMPro.Examples.TMP_FrameRateCounter
 b8f04bdad423045528c67dfa4c3dca0d Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -341,6 +342,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
+d497e83d2f1d12e0cb06c35c7f11b0ad Assembly-CSharp.dll:.Register
 26215f135eeb48d8fa1189498c107f6c Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 0561521e336e270e6e5a9c61387cb838 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
 2e0fd93f459db951da0e2e94e2e33fb7 Vuforia.UnityExtensions.dll:Vuforia.AnchorStageBehaviour

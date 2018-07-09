@@ -5,7 +5,7 @@ using Vuforia;
 
 public class ARCameraController : MonoBehaviour {
 
-	public GameObject ARCamera; 
+	//public GameObject ARCamera; 
 
 	void Awake(){
 /*

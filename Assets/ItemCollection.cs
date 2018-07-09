@@ -19,6 +19,15 @@ public class ItemCollection : MonoBehaviour {
 	public Animator fadeOutAnim;
 	public GameObject ARCamera; 
 
+	void Awake(){
+
+		if(SceneManager.GetActiveScene().buildIndex == 2){
+			ARCamera = GameObject.Find("ARCamera");
+			ARCamera.GetComponent<VuforiaBehaviour>().enabled = true;
+
+		}	
+	}
+
 
 	
 	void Start () {
