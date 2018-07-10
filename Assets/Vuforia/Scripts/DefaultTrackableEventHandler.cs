@@ -157,6 +157,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 }
                 */
 
+            }else{
+                print("Database PROBLEM");
             }
         });     
 

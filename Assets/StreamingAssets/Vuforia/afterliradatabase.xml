@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="sirma" size="5.000000 4.211357" />
+    <ImageTarget name="qrcode" size="5.000000 5.000000" />
     <ImageTarget name="20lira" size="5.000000 2.326923" />
     <ImageTarget name="10lira" size="5.000000 2.386224" />
     <ImageTarget name="200lira" size="5.000000 2.258786" />
     <ImageTarget name="100lira" size="5.000000 2.326316" />
     <ImageTarget name="50lira" size="5.000000 2.623077" />
     <ImageTarget name="5lira" size="5.000000 2.467128" />
+    <ImageTarget name="canakkale-cinemaximum" size="5.000000 1.935484" />
   </Tracking>
 </QCARConfig>

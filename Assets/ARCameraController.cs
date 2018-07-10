@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Vuforia;
 
 public class ARCameraController : MonoBehaviour {
@@ -26,6 +27,15 @@ public class ARCameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+		if(Input.GetKeyDown(KeyCode.Escape)){
+
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+		}
+
+
 		//ARCamera = GameObject.Find("ARCamera");
 		//VuforiaRuntime.Instance.InitVuforia();
 		//ARCamera.GetComponent<VuforiaBehaviour>().enabled = true;

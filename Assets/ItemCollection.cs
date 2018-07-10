@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
@@ -17,7 +18,9 @@ public class ItemCollection : MonoBehaviour {
 	//string jsonString;
 	string availability;
 	public Animator fadeOutAnim;
-	public GameObject ARCamera; 
+	public GameObject ARCamera;
+	int numOfItems = 0; 
+	public Text itemNumber_Text;
 
 	void Awake(){
 
@@ -102,9 +105,14 @@ public class ItemCollection : MonoBehaviour {
 									collectionUpdate.Add( touchedObj.name, "collected");
 
 									//reference.SetRawJsonValueAsync(jsonString);
-									reference.UpdateChildrenAsync(collectionUpdate);							
+									reference.UpdateChildrenAsync(collectionUpdate);
+
+									numOfItems += 1;
+									itemNumber_Text.text = numOfItems.ToString();
+
 								}else{
 									print("Item already collected!");
+									fadeOutAnim.enabled = false;
 								}
 					        }
 					    });
