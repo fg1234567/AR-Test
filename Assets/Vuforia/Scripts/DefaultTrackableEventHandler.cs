@@ -9,12 +9,11 @@ Confidential and Proprietary - Protected under copyright and other laws.
 using UnityEngine;
 using Vuforia;
 
-using Firebase;
-using Firebase.Database;
-using Firebase.Unity.Editor;
-
 /// <summary>
-///     A custom handler that implements the ITrackableEventHandler interface.
+/// A custom handler that implements the ITrackableEventHandler interface.
+/// 
+/// Changes made to this file could be overwritten when upgrading the Vuforia version. 
+/// When implementing custom event handler behavior, consider inheriting from this class instead.
 /// </summary>
 public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 {
@@ -26,31 +25,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     #region UNITY_MONOBEHAVIOUR_METHODS
 
-    public DatabaseReference reference;
-    string availability;
-    //bool isAvailable;
-
     protected virtual void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
-        if (mTrackableBehaviour){
+        if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
-        }
-
-        // *********************************** FIREBASE OPERATIONS
-        
-        // Set up the Editor before calling into the realtime database.
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://ar-test-firebase.firebaseio.com/");
-
-        // Get the root reference location of the database.
-        reference = FirebaseDatabase.DefaultInstance.RootReference; 
-
-
-
-        // *********************************** FIREBASE OPERATIONS
-
-
-
     }
 
     protected virtual void OnDestroy()
@@ -79,7 +58,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             OnTrackingFound();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
-                 newStatus == TrackableBehaviour.Status.NOT_FOUND)
+                 newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
             OnTrackingLost();
@@ -103,75 +82,17 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
 
-        //Checking if the item is already collected or not
-
-        reference = FirebaseDatabase.DefaultInstance.RootReference; 
-
-
-        reference.GetValueAsync().ContinueWith(task => { //Be carefull about asyncronization, task is the return of asyncronized function -> ContinueWith() takes a callback function as argument
-            
-            if (task.IsFaulted) {
-                // Handle the error...
-                print("Database check error!");
-            }
-            else if (task.IsCompleted) {
-                DataSnapshot snapshot = task.Result;
-                print("ITEM NAME: " + colliderComponents[0].name);
-
-                availability = (string)snapshot.Child(colliderComponents[0].name).Value;
-                //print("Availibility: " + availability);
-
-                if(availability != null ){
-
-                    if(availability == "collected"){
-                        print("Item is COLLECTED!");
-                        foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
-                            component.enabled = true;
-                            Color color = component.GetComponent<Renderer>().material.color;
-                            color.a = 0.40f;// This number equals approximately to 100/255, transparency in the last frame of fade out animation. 
-                            component.GetComponent<Renderer>().material.color = color;           
-                        
-                        } 
-                    }else{
-                        print("Item is AVAILABLE!");
-                        foreach (var component in rendererComponents){ 
-                            component.enabled = true;
-                            Color color = component.GetComponent<Renderer>().material.color;
-                            color.a = 1.00f;// ATTENTION! IF ITEM IS AVAILABLE we render the component with %100 alpha value, 
-                            component.GetComponent<Renderer>().material.color = color;                
-                        } 
-                    }
-                }else{ //error catching
-                    print("Item availability information could not be reached!");
-                }   
-
-                /*
-                // Enable rendering:
-                foreach (var component in rendererComponents){ //we render each component "after we check" the availibility in the firebase realtime database
-                    component.enabled = true;
-                    if(availability != null && availability == "collected"){
-                        Color color = component.GetComponent<Renderer>().material.color;
-                        color.a = 0.40f;// This number equals approximately to 100/255, transparency in the last frame of fade out animation. 
-                        component.GetComponent<Renderer>().material.color = color;                
-                    } 
-                }
-                */
-
-            }else{
-                print("Database PROBLEM");
-            }
-        });     
-
+        // Enable rendering:
+        foreach (var component in rendererComponents)
+            component.enabled = true;
 
         // Enable colliders:
-        foreach (var component in colliderComponents){
+        foreach (var component in colliderComponents)
             component.enabled = true;
-        }
 
         // Enable canvas':
-        foreach (var component in canvasComponents){
+        foreach (var component in canvasComponents)
             component.enabled = true;
-        }
     }
 
 

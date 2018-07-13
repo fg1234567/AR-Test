@@ -6,11 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/LoginPage.unity
+    path: Assets/Scenes/LoginPage.unity
     guid: d5d49625c91cc964e972c7043d8ada85
   - enabled: 1
-    path: Assets/MainMenu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 3e0d37ce777cba14783a6fd138c25063
   - enabled: 1
-    path: Assets/AR-Test.unity
+    path: Assets/Scenes/AR-Test.unity
     guid: 6e088cbf3d58dac4a86a05be6e712ab5
+  m_configObjects: {}
